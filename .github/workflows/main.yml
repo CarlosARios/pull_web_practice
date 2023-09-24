@@ -1,8 +1,7 @@
 name: validación
 on:
   push:
-    branches:
-      - master
+    branches: [master]
 
 jobs:
   validacion_clave:
