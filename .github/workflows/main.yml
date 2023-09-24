@@ -12,13 +12,12 @@ jobs:
     steps:
       - name: Validar mensaje de commit
         run: |
-          if: ${{ contains(github.event.head_commit.message, 'ROMA') }}; then
-            # El mensaje del commit contiene 'ROMA'.
+          if [[ "${{ github.event.head_commit.message }}" == *'ROMA'* ]]; then
+            echo "El mensaje del commit contiene 'ROMA'."
             git checkout -b polar
             git push -f -u origin polar
           else
-            # El mensaje del commit no contiene 'ROMA'.
-            echo "No se realizará ninguna acción."
+            echo "El mensaje del commit no contiene 'ROMA'. No se realizará ninguna acción."
           fi
 
       
