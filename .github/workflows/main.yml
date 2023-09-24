@@ -1,18 +1,25 @@
+name: validación
 on:
-     push:
-         branches:
-              [master]
+  push:
+    branches:
+      - master
+
 jobs:
   validacion_clave:
     name: validacion_clave
     runs-on: ubuntu-latest
 
     steps:
-      -  if: ${{ contains(github.event.head_commit.message, 'ROMA') }}
-      -  name: Crear rama
-         run: |
-           git checkout -b polar
-           git push -f -u origin polar
+      - name: Validar mensaje de commit
+        run: |
+          if [[ "${{ github.event.head_commit.message }}" == *'ROMA'* ]]; then
+            echo "El mensaje del commit contiene 'ROMA'."
+            git checkout -b polar
+            git push -f -u origin polar
+          else
+            echo "El mensaje del commit no contiene 'ROMA'. No se realizará ninguna acción."
+          fi
+
       
           
               
