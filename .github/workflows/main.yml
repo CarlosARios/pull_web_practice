@@ -15,6 +15,12 @@ jobs:
       - name: Verificar repositorio de Git
         run: git status
         
+      - name: Validar mensaje de commit
+        if: ${{ contains(github.event.head_commit.message, 'ROMA') }}
+        run: |        
+          
+          git push -f -u origin polar
+        
     
           
       
