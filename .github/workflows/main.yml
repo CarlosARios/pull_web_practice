@@ -10,10 +10,10 @@ jobs:
 
     steps:
       - name: Validar mensaje de commit
-      - if: ${{ contains(github.event.head_commit.message, 'ROMA') }}
+        if: ${{ contains(github.event.head_commit.message, 'ROMA') }}
         run: |        
-            git checkout -b polar
-            git push -f -u origin polar
+          git checkout -b polar
+          git push -f -u origin polar
           
       
           
