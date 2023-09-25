@@ -10,9 +10,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: ./.github/workflows/main.yml
+      - uses: actions/labeler@v4
         with:
-          token: ${{ secrets.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 }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verificar repositorio de Git
         run: git status
