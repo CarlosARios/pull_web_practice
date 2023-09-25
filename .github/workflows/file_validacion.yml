@@ -27,10 +27,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-job2:
-        name: Pruebas
-        runs-on: ubuntu-latest
-        steps:
+          
+  test:   
+     needs: validacion_clave 
+     name: pruebas_unittest
+     runs-on: ubuntu-latest
+     steps:
             - name: Checkout de repositorio
               uses: actions/checkout@v2
             - name: Configuración de entorno de python
@@ -44,3 +46,17 @@ job2:
             - name: Correr pruebas
               id: correr-pruebas
               run: python -m unittest discover -s tests
+ 
+  merging:   
+     needs: pruebas_unittest
+     name: Merging Release --> Master
+     uses: tukasz/direct-merge-action@master
+     with:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       source-branch: release
+       target-branch: develop
+   
+
+            
+       
+        
