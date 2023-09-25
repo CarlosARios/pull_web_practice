@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: ./.github/actions/main
+        uses: ./.github/actions/validación
         with:
           token: ${{ secrets.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 }}
 
