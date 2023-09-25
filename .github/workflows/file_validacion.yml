@@ -51,10 +51,10 @@ jobs:
      needs: pruebas_unittest
      name: Merging Release --> Master
      uses: tukasz/direct-merge-action@master
-     with:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       source-branch: release
-       target-branch: develop
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        source-branch: release
+        target-branch: develop
    
 
             
