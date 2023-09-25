@@ -10,9 +10,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: ./.github/actions/main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.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 }}
 
       - name: Verificar repositorio de Git
         run: git status
